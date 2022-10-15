@@ -1,0 +1,199 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.backdrop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #121F27; */
+    width: 100%;
+    height: 100vh;
+}
+.app{
+    position: absolute;
+    background-color: #202E37;
+    width: 360px;
+    height: 700px;
+    overflow-y: hidden;
+    border: 8px solid white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border-radius: 30px;
+}
+.bar1{
+    display: flex;
+    align-items: center;
+    background-color: none;
+}
+.bar2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 15px 0px 15px
+}
+.wordmark{
+    background-color: none;
+    width: 70%;
+    color: white;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.searchAndMenu{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    padding-right: 20px;
+    width: 20%;
+}
+.search{
+    background-image: url(../images/icons/loupe.png);
+}
+.menu{
+    background-image: url(../images/icons/menu.png);
+}
+.cameraIcon{
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(60%);
+    cursor: pointer;
+    background-image: url(../images/icons/camera.png);
+}
+#icon{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.navigation{
+    display: flex;
+    background-color: none;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.active{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 75px;
+    color: #00B787;
+    border-bottom: 2px solid#00B787;
+    padding: 10px 20px 10px 20px;
+    font-size: 13px;
+}
+.inactive{
+    color: white;
+    padding: 10px 20px 10px 20px;
+    font-size: 13px;
+}
+#links{
+    padding: 5px;
+}
+.notificaion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00B787;
+    color:#121F27;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: sans-serif;
+    padding: 3px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50px;
+}
+.card{
+    display: flex;
+    background-color: #121E28;
+    padding: 12px;
+}
+.dp{
+    width: 55px;
+    height: 55px;
+    border-radius: 60px;
+    margin-right: 10px;
+}
+.info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.topInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+    margin-bottom: 8px;
+}
+.bottomInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+}
+.name{
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.msg{
+    display: flex;
+    background-color: none;
+    width: 240px;
+}
+.msgtxt{
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(255, 255, 255, 0.452);
+}
+.time{
+    font-size: 12px;
+    color: #00B787;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.timeSeen{
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.452);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.msgStatus{
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+.displayNone{
+    display: none;
+}
+.bottombtn{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #00B787;
+    border-radius: 80px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.chaticon{
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(60%);
+    cursor: pointer;
+    background-image: url(../images/icons/chat.png);
+}
