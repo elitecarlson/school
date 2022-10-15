@@ -1,6 +1,6 @@
 # Whatsapp Ui with react
 Trying the whatsapp android Ui with React
 
-Reference Image                   | Ende Result
+Reference Image                   | End Result
 :-------------------------:|:-------------------------:
 ![](src/Assets/images/refrence.png)  |  ![](src/Assets/images/result1.png)
