@@ -1,11 +1,10 @@
-import app from "../firebase-config";
+import { auth } from "../firebase-config";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Signup(){
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
-    const auth = getAuth(app);
     const creatuser = async () => {
         try{
             const user =await createUserWithEmailAndPassword(
@@ -18,6 +17,7 @@ function Signup(){
             console.log(error.message);
         }
     }
+    console.log(emailValue);
     return(
         <>
         <h1>Signup page</h1><br />

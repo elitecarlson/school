@@ -3,7 +3,8 @@ import "../src/Assets/css/app.css";
 import Login from "./components/login";
 import Signup from "./components/signup";
 import Account from "./components/account";
-// import PageNotFound from "./components/404";
+import PageNotFound from "./components/404";
+import Crud from "./components/crud";
 function App() {
   return (
     <>
@@ -11,8 +12,8 @@ function App() {
       <Route path="/" element={<Account/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
-      {/* <Route path="/:id" element={<Account/>}></Route>
-      <Route path="*" element={<PageNotFound/>}></Route> */}
+      <Route path="/admin" element={<Crud/>}></Route>
+      <Route path="*" element={<PageNotFound/>}></Route>
     </Routes>
     </>
   );
