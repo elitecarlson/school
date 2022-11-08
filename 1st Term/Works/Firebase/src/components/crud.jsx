@@ -25,6 +25,7 @@ function Crud(){
     }
     return(
         <>
+        <div className="crud">
         <div className="cont">
             <input
                 className="nameField"
@@ -40,6 +41,7 @@ function Crud(){
                     addName()
                 }}
             >{btnVal}</button>
+        </div>
         </div>
         </>
     );
