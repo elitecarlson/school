@@ -1,4 +1,4 @@
-import vid from "../Assets/videos/vertical.mp4";
+import vid from "../Assets/videos/vertical 2.mp4";
 import css from "../Assets/css/q.module.css";
 import lewis from "../Assets/images/lewis.jpg"
 import { useState } from "react";
@@ -9,6 +9,7 @@ function Questions(){
     const[mute, setMute] = useState(false);
     const[paused, setPaused] = useState(false);
     const[disable, setDisable] = useState(false);
+    const[enable, setEnable] = useState(false);
     const vidRef = useRef();
     const vidProgressBar = useRef();
     const answer1 = useRef();
@@ -76,6 +77,7 @@ function Questions(){
             showanswer();
         }
         setDisable(true);
+        setEnable(true);
     }
     const verifyanswer2 = () => {
         if(answer2.current.value == answer){
@@ -85,6 +87,7 @@ function Questions(){
             showanswer();
         }
         setDisable(true);
+        setEnable(true);
     }
     const verifyanswer3 = () => {
         if(answer3.current.value == answer){
@@ -94,6 +97,7 @@ function Questions(){
             showanswer();
         }
         setDisable(true);
+        setEnable(true);
     }
     const verifyanswer4 = () => {
         if(answer4.current.value == answer){
@@ -103,7 +107,20 @@ function Questions(){
             showanswer();
         }
         setDisable(true);
+        setEnable(true);
     }
+    const keyDownEvents = (event) => {
+        if(event.key === '1'){
+            verifyanswer1();
+        }else if(event.key === '2'){
+            verifyanswer2();
+        }else if(event.key === '3'){
+            verifyanswer3();
+        }else if(event.key === '4'){
+            verifyanswer4();
+        }
+    }
+    document.addEventListener('keyup', keyDownEvents)
     return(
         <>
         <div className={css.Container}>
@@ -125,20 +142,35 @@ function Questions(){
 
             {/* Questions container  */}
             <div className={css.qContainer}>
-                <div className={css.profileBtn}>
-                    <img src={lewis} className={css.profilPic}/>
-                    <p className="displayName">Lewis Hamilton</p>
-                </div>
+                {/* <div className={css.header}>
+                    <div className={css.profileBtn}>
+                        <img src={lewis} className={css.profilPic}/>
+                        <p className={css.displayName}>Lewis Hamilton</p>
+                    </div>
+                </div> */}
                 <p className={css.questionTxt}>What negative artist trop does Dooby refernce</p>
                 <div className={css.answers}>
                     <div className={css.answerSepartor}>
-                    <button className={css.answer} disabled={disable} value="true" onClick={verifyanswer1} ref={answer1}>Hardwork</button>
-                    <button className={css.answer} disabled={disable} value="false" onClick={verifyanswer2} ref={answer2}>Struggle</button>
+                    <button className={css.answer} disabled={disable} value="true" onClick={verifyanswer1} ref={answer1}>
+                        <div className={css.numpadAnswer}>1</div>
+                        <div className={css.answerTxt}>Hardwork</div>
+                    </button>
+                    <button className={css.answer} disabled={disable} value="false" onClick={verifyanswer2} ref={answer2}>
+                        <div className={css.numpadAnswer}>2</div>
+                        <div className={css.answerTxt}>Struggle</div></button>
                     </div><br />
                     <div className={css.answerSepartor}>
-                    <button className={css.answer} disabled={disable} value="maybe" onClick={verifyanswer3} ref={answer3}>Patience</button>
-                    <button className={css.answer} disabled={disable} value="plaossibe" onClick={verifyanswer4} ref={answer4}>Lazyness</button>
+                    <button className={css.answer} disabled={disable} value="maybe" onClick={verifyanswer3} ref={answer3}>
+                        <div className={css.numpadAnswer}>3</div>
+                        <div className={css.answerTxt}>Patience</div></button>
+                    <button className={css.answer} disabled={disable} value="plaossibe" onClick={verifyanswer4} ref={answer4}>
+                        <div className={css.numpadAnswer}>4</div>
+                        <div className={css.answerTxt}>Lazyness</div></button>
                     </div>
+                </div>
+                <div className={css.bottomBtns}>
+                    <button className={css.relearn}>Rewatch Lesson</button>
+                    <button disabled={enable} className={enable ? css.conrinuelearning : css.conrinuelearningdisabled}>Learn on</button>
                 </div>
             </div>
         </div>
