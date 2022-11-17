@@ -1,8 +1,9 @@
 import vid from "../Assets/videos/vertical 2.mp4";
 import css from "../Assets/css/q.module.css";
-import lewis from "../Assets/images/lewis.jpg"
 import { useState } from "react";
 import { useRef } from "react";
+import Navbar from "./navbar";
+import { Link } from "react-router-dom";
 
 function Questions(){
     const[btnVis, setBtnVis] = useState(true);
@@ -10,6 +11,7 @@ function Questions(){
     const[paused, setPaused] = useState(false);
     const[disable, setDisable] = useState(false);
     const[enable, setEnable] = useState(false);
+    const[answered,setAnswered] = useState(false);
     const vidRef = useRef();
     const vidProgressBar = useRef();
     const answer1 = useRef();
@@ -74,6 +76,7 @@ function Questions(){
             answer1.current.className = css.answertrue;
         }else{
             answer1.current.className = css.answerfalse;
+            setAnswered(true);
             showanswer();
         }
         setDisable(true);
@@ -84,6 +87,7 @@ function Questions(){
             answer2.current.className = css.answertrue;
         }else{
             answer2.current.className = css.answerfalse;
+            setAnswered(true);
             showanswer();
         }
         setDisable(true);
@@ -94,6 +98,7 @@ function Questions(){
             answer3.current.className = css.answertrue;
         }else{
             answer3.current.className = css.answerfalse;
+            setAnswered(true);
             showanswer();
         }
         setDisable(true);
@@ -104,25 +109,29 @@ function Questions(){
             answer4.current.className = css.answertrue;
         }else{
             answer4.current.className = css.answerfalse;
+            setAnswered(true);
             showanswer();
         }
         setDisable(true);
         setEnable(true);
     }
     const keyDownEvents = (event) => {
-        if(event.key === '1'){
-            verifyanswer1();
-        }else if(event.key === '2'){
-            verifyanswer2();
-        }else if(event.key === '3'){
-            verifyanswer3();
-        }else if(event.key === '4'){
-            verifyanswer4();
+        if(answered === false){
+            if(event.key === '1'){
+                verifyanswer1();
+            }else if(event.key === '2'){
+                verifyanswer2();
+            }else if(event.key === '3'){
+                verifyanswer3();
+            }else if(event.key === '4'){
+                verifyanswer4();
+            }
         }
     }
     document.addEventListener('keyup', keyDownEvents)
     return(
         <>
+        {/* <Navbar fixed="false"></Navbar> */}
         <div className={css.Container}>
             {/* Video container  */}
             <div className={css.vidCont}>
@@ -136,41 +145,43 @@ function Questions(){
                 </div>
                 <div className={css.invisiblePause} onClick={pauseVid}></div>
                 <div className={btnVis ? css.Hidden : css.rangeCont}>
-                    <input type="range" value="0" class="progressbar" className={css.range} ref={vidProgressBar} onInput={progress_seek}></input>
+                    <input type="range" class="progressbar" className={css.range} ref={vidProgressBar} onInput={progress_seek}></input>
                 </div>
             </div>
 
             {/* Questions container  */}
             <div className={css.qContainer}>
-                {/* <div className={css.header}>
-                    <div className={css.profileBtn}>
-                        <img src={lewis} className={css.profilPic}/>
-                        <p className={css.displayName}>Lewis Hamilton</p>
+                <div className={css.centered}>
+                    <div className={css.header}>
+                        <div className={css.courseprogress} data-label="."></div>
+                        <Link to='/'>
+                        <div className={css.closeicon}></div>
+                        </Link>
                     </div>
-                </div> */}
-                <p className={css.questionTxt}>What negative artist trop does Dooby refernce</p>
-                <div className={css.answers}>
-                    <div className={css.answerSepartor}>
-                    <button className={css.answer} disabled={disable} value="true" onClick={verifyanswer1} ref={answer1}>
-                        <div className={css.numpadAnswer}>1</div>
-                        <div className={css.answerTxt}>Hardwork</div>
-                    </button>
-                    <button className={css.answer} disabled={disable} value="false" onClick={verifyanswer2} ref={answer2}>
-                        <div className={css.numpadAnswer}>2</div>
-                        <div className={css.answerTxt}>Struggle</div></button>
-                    </div><br />
-                    <div className={css.answerSepartor}>
-                    <button className={css.answer} disabled={disable} value="maybe" onClick={verifyanswer3} ref={answer3}>
-                        <div className={css.numpadAnswer}>3</div>
-                        <div className={css.answerTxt}>Patience</div></button>
-                    <button className={css.answer} disabled={disable} value="plaossibe" onClick={verifyanswer4} ref={answer4}>
-                        <div className={css.numpadAnswer}>4</div>
-                        <div className={css.answerTxt}>Lazyness</div></button>
+                    <p className={css.questionTxt}>What negative artist trop does Dooby refernce</p>
+                    <div className={css.answers}>
+                        <div className={css.answerSepartor}>
+                        <button className={css.answer} disabled={disable} value="true" onClick={verifyanswer1} ref={answer1}>
+                            <div className={css.numpadAnswer}>1</div>
+                            <div className={css.answerTxt}>Hardwork</div>
+                        </button>
+                        <button className={css.answer} disabled={disable} value="false" onClick={verifyanswer2} ref={answer2}>
+                            <div className={css.numpadAnswer}>2</div>
+                            <div className={css.answerTxt}>Struggle</div></button>
+                        </div><br />
+                        <div className={css.answerSepartor}>
+                        <button className={css.answer} disabled={disable} value="maybe" onClick={verifyanswer3} ref={answer3}>
+                            <div className={css.numpadAnswer}>3</div>
+                            <div className={css.answerTxt}>Patience</div></button>
+                        <button className={css.answer} disabled={disable} value="plaossibe" onClick={verifyanswer4} ref={answer4}>
+                            <div className={css.numpadAnswer}>4</div>
+                            <div className={css.answerTxt}>Lazyness</div></button>
+                        </div>
                     </div>
-                </div>
-                <div className={css.bottomBtns}>
-                    <button className={css.relearn}>Rewatch Lesson</button>
-                    <button disabled={enable} className={enable ? css.conrinuelearning : css.conrinuelearningdisabled}>Learn on</button>
+                    <div className={css.bottomBtns}>
+                        <button className={css.relearn}>Rewatch Lesson</button>
+                        <button disabled={enable} className={enable ? css.conrinuelearning : css.conrinuelearningdisabled}>Learn on</button>
+                    </div>
                 </div>
             </div>
         </div>
