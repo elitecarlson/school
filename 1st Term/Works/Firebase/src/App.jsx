@@ -5,9 +5,11 @@ import Signup from "./components/signup";
 import Account from "./components/account";
 import PageNotFound from "./components/404";
 import Crud from "./components/crud";
-import Questions from "./components/questions";
-import Navbar from "./components/navbar";
-import Questions_admin from "./components/questions-admin";
+import Player from "./components/player";
+import QselectDiv from "./components/q-selectDiv";
+import Qselect from "./pages/q-select";
+import QselectAdmin from "./pages/q-selectAdmin";
+import Loading from "./components/loading";
 function App() {
   return (
     <>
@@ -16,9 +18,11 @@ function App() {
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path="/admin" element={<Crud/>}></Route>
-      <Route path="/q" element={<Questions/>}></Route>
-      <Route path="/admin/q" element={<Questions_admin/>}></Route>
-      <Route path="/navbar" element={<Navbar/>}></Route>
+      <Route path="/quiz" element={<Qselect/>}></Route>
+      <Route path="/admin/q" element={<QselectAdmin/>}></Route>
+      <Route path="/dev/player" element={<Player/>}></Route>
+      <Route path="/dev/qsNav" element={<QselectDiv/>}></Route>
+      <Route path="/dev/loading" element={<Loading/>}></Route>
       <Route path="*" element={<PageNotFound/>}></Route>
     </Routes>
     </>
