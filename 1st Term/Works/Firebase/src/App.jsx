@@ -10,6 +10,7 @@ import QselectDiv from "./components/q-selectDiv";
 import Qselect from "./pages/q-select";
 import QselectAdmin from "./pages/q-selectAdmin";
 import Loading from "./components/loading";
+import Shuffle from "./pages/shuffle";
 function App() {
   return (
     <>
@@ -17,7 +18,7 @@ function App() {
       <Route path="/" element={<Account/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
-      <Route path="/admin" element={<Crud/>}></Route>
+      <Route path="/admin" element={<Shuffle/>}></Route>
       <Route path="/quiz" element={<Qselect/>}></Route>
       <Route path="/admin/q" element={<QselectAdmin/>}></Route>
       <Route path="/dev/player" element={<Player/>}></Route>
