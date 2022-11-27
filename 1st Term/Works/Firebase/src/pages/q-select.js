@@ -80,8 +80,7 @@ function Qselect(){
             return array;
         }
         // Shuffle & Disguise Answers
-        const ansArray = [correct, wrong1, wrong2, wrong3];
-        shuffle(ansArray)
+        const ansArray = shuffle([correct, wrong1, wrong2, wrong3]);
         return(
             <>
             <div className={css.Container}>
