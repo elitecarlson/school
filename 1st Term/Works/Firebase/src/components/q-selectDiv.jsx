@@ -1,4 +1,5 @@
 import css from "../Assets/css/q-selectDiv.module.css";
+import correctsound from "../Assets/Audio/correct.m4a";
 import { useState } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
@@ -12,6 +13,9 @@ function QselectDiv(props){
     const answer3 = useRef();
     const answer4 = useRef();
     const answer = props.correct;
+    const audioRef = useRef();
+
+    // audioRef.current.volume = 0.5;
     const showanswer = () => {
         if(answer1.current.value == answer){
             let theanswer = answer1;
@@ -30,6 +34,7 @@ function QselectDiv(props){
     const verifyanswer1 = () => {
         if(answer1.current.value == answer){
             answer1.current.className = css.answertrue;
+            audioRef.current.play();
         }else{
             answer1.current.className = css.answerfalse;
             setAnswered(true);
@@ -41,6 +46,7 @@ function QselectDiv(props){
     const verifyanswer2 = () => {
         if(answer2.current.value == answer){
             answer2.current.className = css.answertrue;
+            audioRef.current.play();
         }else{
             answer2.current.className = css.answerfalse;
             setAnswered(true);
@@ -52,6 +58,7 @@ function QselectDiv(props){
     const verifyanswer3 = () => {
         if(answer3.current.value == answer){
             answer3.current.className = css.answertrue;
+            audioRef.current.play();
         }else{
             answer3.current.className = css.answerfalse;
             setAnswered(true);
@@ -63,6 +70,7 @@ function QselectDiv(props){
     const verifyanswer4 = () => {
         if(answer4.current.value == answer){
             answer4.current.className = css.answertrue;
+            audioRef.current.play();
         }else{
             answer4.current.className = css.answerfalse;
             setAnswered(true);
@@ -88,6 +96,7 @@ function QselectDiv(props){
     return(
         <>
             <div className={css.qContainer}>
+                <audio src={correctsound} ref={audioRef} className={css.audio}></audio>
                 <div className={css.centered}>
                     <div className={css.header}>
                         <div className={css.courseprogress} data-label="."></div>
