@@ -15,7 +15,6 @@ function QselectDiv(props){
     const answer = props.correct;
     const audioRef = useRef();
 
-    // audioRef.current.volume = 0.5;
     const showanswer = () => {
         if(answer1.current.value == answer){
             let theanswer = answer1;
@@ -35,6 +34,7 @@ function QselectDiv(props){
         if(answer1.current.value == answer){
             answer1.current.className = css.answertrue;
             audioRef.current.play();
+            audioRef.current.volume = 0.3;
         }else{
             answer1.current.className = css.answerfalse;
             setAnswered(true);
@@ -47,6 +47,7 @@ function QselectDiv(props){
         if(answer2.current.value == answer){
             answer2.current.className = css.answertrue;
             audioRef.current.play();
+            audioRef.current.volume = 0.3;
         }else{
             answer2.current.className = css.answerfalse;
             setAnswered(true);
@@ -59,6 +60,7 @@ function QselectDiv(props){
         if(answer3.current.value == answer){
             answer3.current.className = css.answertrue;
             audioRef.current.play();
+            audioRef.current.volume = 0.3;
         }else{
             answer3.current.className = css.answerfalse;
             setAnswered(true);
@@ -71,6 +73,7 @@ function QselectDiv(props){
         if(answer4.current.value == answer){
             answer4.current.className = css.answertrue;
             audioRef.current.play();
+            audioRef.current.volume = 0.3;
         }else{
             answer4.current.className = css.answerfalse;
             setAnswered(true);
