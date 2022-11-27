@@ -58,7 +58,7 @@ function Player(props){
                 </div>
                 <div className={css.invisiblePause} onClick={pauseVid}></div>
                 <div className={btnVis ? css.Hidden : css.rangeCont}>
-                    <input type="range" class="progressbar" className={css.range} ref={vidProgressBar} onInput={progress_seek}></input>
+                    <input type="range" value="0" class="progressbar" className={css.range} ref={vidProgressBar} onInput={progress_seek}></input>
                 </div>
             </div>
         </>
