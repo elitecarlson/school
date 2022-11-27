@@ -16,11 +16,10 @@ function QselectAdmin(){
     const [wrong3, setWrong3] = useState(null);
     const [step, setStep] = useState(0);
     const [disabled, setDisabled] = useState(true)
-    const [disabledtwo, setDisabledtwo] = useState(true);
     const [uploadState, setuploadState] = useState(false);
-    const [usdiv, setUsdiv] = useState(false);
-    const [usstate, setUsstate] = useState(false);
-    console.log(video)
+    const [alertdiv, setalertdiv] = useState(false);
+    const [alertstate, setalertstate] = useState(false);
+    const [alertTxt, setalertTxt] = useState('');
     const filechange = (event) => {
         setVideo(event.target.files[0])
         setDisabled(false)
@@ -34,25 +33,45 @@ function QselectAdmin(){
         setDisabled(false)
     }
     const uploadvid = async () => {
-        try{   
-            setuploadState(true);
-                const vid = v4();
-                const qid = v4();
-                const videoRef = ref(storage, `videos/${vid}`);
-                await setDoc(doc(db, "Questions", qid), {
-                    Type: 'selection',
-                    video: vid,
-                    question: question,
-                    correct: correct,
-                    wrong1: wrong1,
-                    wrong2: wrong2,
-                    wrong3: wrong3
-                });
-                uploadBytes(videoRef, video).then(() => {
-                    setuploadState(false);
-                })
-        }catch(error){
-            console.log(error);
+        if(question != null && correct != null && wrong1 != null && wrong2 != null && wrong3 != null){
+            try{   
+                setuploadState(true);
+                    const vid = v4();
+                    const qid = v4();
+                    const videoRef = ref(storage, `videos/${vid}`);
+                    await setDoc(doc(db, "Questions", qid), {
+                        Type: 'selection',
+                        video: vid,
+                        question: question,
+                        correct: correct,
+                        wrong1: wrong1,
+                        wrong2: wrong2,
+                        wrong3: wrong3
+                    });
+                    uploadBytes(videoRef, video).then(() => {
+                        setuploadState(false);
+                        setalertdiv(true);
+                        setalertstate(true);
+                        setalertTxt('Succesfull upload');
+                        setTimeout(()=>{
+                            setalertdiv(false)
+                        },5000);
+                    })
+            }catch(error){
+                setalertdiv(true);
+                setalertstate(false)
+                setalertTxt('Failed to upload');
+                setTimeout(()=>{
+                    setalertdiv(false)
+                },5000);
+            }
+        }else{
+            setalertdiv(true);
+            setalertstate(false);
+            setalertTxt('Fill in all forms');
+            setTimeout(()=>{
+                setalertdiv(false)
+            },5000);
         }
     }
     if(uploadState === false){
@@ -60,15 +79,12 @@ function QselectAdmin(){
     }else if(uploadState === true){
         var btnVal = <BeatLoader color={"#ffffff"}size={10}/>;
     }
-    if(question != null && correct != null && wrong1 != null && wrong2 != null && wrong3 != null){
-        setState({disabledtwo : false})
-    }
     if(step == 1){
         return(
             <>
-            <div className={css.uploadsuccessDiv}>
-                <div className={usstate ? css.line : css.linered}></div>
-                <p>{usstate ? 'Upload was successfull' : 'Upload failed'}</p>
+            <div className={alertdiv ? css.uploadsuccessDiv : css.hidden}>
+                <div className={alertstate ? css.line : css.linered}></div>
+                <p>{alertTxt}</p>
             </div>
             <div className={css.container}>
                 <div className={css.centered}>
@@ -128,10 +144,9 @@ function QselectAdmin(){
                             setDisabled(true)
                         }}></div>
                     </div><br /><br />
-                    <button 
-                        disabled={disabledtwo}
+                    <button
                         onClick={uploadvid}
-                        className={disabledtwo ? css.submitbtndisabled : css.submitbtn}>{btnVal}</button>
+                        className={css.submitbtn}>{btnVal}</button>
                 </div>
             </div>
             </>
