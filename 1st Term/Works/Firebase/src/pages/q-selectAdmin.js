@@ -40,7 +40,7 @@ function QselectAdmin(){
                     const qid = v4();
                     const videoRef = ref(storage, `videos/${vid}`);
                     await setDoc(doc(db, "Questions", qid), {
-                        Type: 'selection',
+                        Type: 'videoSelection',
                         video: vid,
                         question: question,
                         correct: correct,
