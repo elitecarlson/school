@@ -7,7 +7,7 @@ import PageNotFound from "./components/404";
 import Crud from "./components/crud";
 import Player from "./components/player";
 import QselectDiv from "./components/q-selectDiv";
-import Qselect from "./pages/q-select";
+import Qselect from "./pages/quiz";
 import QselectAdmin from "./pages/q-selectAdmin";
 import Loading from "./components/loading";
 import Shuffle from "./pages/shuffle";
@@ -21,7 +21,7 @@ function App() {
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path="/admin" element={<Shuffle/>}></Route>
       <Route path="/admin/q" element={<QselectAdmin/>}></Route>
-      <Route path="/quiz" element={<Qselect/>}></Route>
+      <Route path="/quiz/:id" element={<Qselect/>}></Route>
       <Route path="/learn" element={<Learn/>}></Route>
       <Route path="/dev/player" element={<Player/>}></Route>
       <Route path="/dev/qsNav" element={<QselectDiv/>}></Route>
