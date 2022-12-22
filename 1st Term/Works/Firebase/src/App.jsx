@@ -8,10 +8,11 @@ import Crud from "./components/crud";
 import Player from "./components/player";
 import QselectDiv from "./components/q-selectDiv";
 import Qselect from "./pages/quiz";
-import QselectAdmin from "./pages/q-selectAdmin";
+import QselectAdmin from "./pages/vidquizAdmin";
 import Loading from "./components/loading";
 import Shuffle from "./pages/shuffle";
 import Learn from "./pages/learn";
+import Admin from "./pages/admin";
 function App() {
   return (
     <>
@@ -20,7 +21,8 @@ function App() {
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path="/admin" element={<Shuffle/>}></Route>
-      <Route path="/admin/q" element={<QselectAdmin/>}></Route>
+      <Route path="/admin/" element={<Admin/>}></Route>
+      <Route path="/admin/vidquiz" element={<QselectAdmin/>}></Route>
       <Route path="/quiz/:id" element={<Qselect/>}></Route>
       <Route path="/learn" element={<Learn/>}></Route>
       <Route path="/dev/player" element={<Player/>}></Route>

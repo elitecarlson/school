@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 function QselectDiv(props){
     const[disable, setDisable] = useState(false);
     const[enable, setEnable] = useState(false);
-    const[answered,setAnswered] = useState(false);
     const answer1 = useRef();
     const answer2 = useRef();
     const answer3 = useRef();
@@ -37,7 +36,6 @@ function QselectDiv(props){
             audioRef.current.volume = 0.3;
         }else{
             answer1.current.className = css.answerfalse;
-            setAnswered(true);
             showanswer();
         }
         setDisable(true);
@@ -50,7 +48,6 @@ function QselectDiv(props){
             audioRef.current.volume = 0.3;
         }else{
             answer2.current.className = css.answerfalse;
-            setAnswered(true);
             showanswer();
         }
         setDisable(true);
@@ -63,7 +60,6 @@ function QselectDiv(props){
             audioRef.current.volume = 0.3;
         }else{
             answer3.current.className = css.answerfalse;
-            setAnswered(true);
             showanswer();
         }
         setDisable(true);
@@ -76,26 +72,23 @@ function QselectDiv(props){
             audioRef.current.volume = 0.3;
         }else{
             answer4.current.className = css.answerfalse;
-            setAnswered(true);
             showanswer();
         }
         setDisable(true);
         setEnable(true);
     }
     const keyDownEvents = (event) => {
-        if(answered === false){
-            if(event.key === '1'){
-                verifyanswer1();
-            }else if(event.key === '2'){
-                verifyanswer2();
-            }else if(event.key === '3'){
-                verifyanswer3();
-            }else if(event.key === '4'){
-                verifyanswer4();
-            }
+        if(event.key == '1'){
+            verifyanswer1();
+        }else if(event.key == '2'){
+            verifyanswer2();
+        }else if(event.key == '3'){
+            verifyanswer3();
+        }else if(event.key == '4'){
+            verifyanswer4();
         }
     }
-    document.addEventListener('keyup', keyDownEvents)
+    document.addEventListener('keyup', keyDownEvents);
     return(
         <>
             <div className={css.qContainer}>
